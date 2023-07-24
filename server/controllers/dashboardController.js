@@ -1,65 +1,3 @@
-// const Note = require("../models/Notes")
-// const mongoose = require("mongoose")
-
-
-// // get dashboard
-
-// exports.dashboard = async (req, res) => {
-
-//   // let perPage = 12;
-//   // let page = req.query.page || 1;
-
-//   const locals = {
-//     title: "Dashboard",
-//     description: "Free NodeJS Notes App.",
-//   };
-
-//   try {
-//     //   Note.aggregate([
-//     //   { $sort: { updatedAt: -1 } },
-//     //   { $match: { user: new mongoose.Types.ObjectId(req.user.id) } },
-//     //   {
-//     //     $project: {
-//     //       title: { $substr: ["$title", 0, 30] },
-//     //       body: { $substr: ["$body", 0, 100] },
-//     //     },
-//     //   },
-//     // ])
-//     //   .skip(perPage * page - perPage)
-//     //   .limit(perPage)
-//     //   .exec().then(function (err, notes) {
-//       //     Note.count().exec().then(function (err, count) {
-//         //       if (err) return (err);
-//         const notes=await Note.find({});
-//           res.render("dashboard/index", {
-//             userName: req.user.firstName,
-//             locals,
-//             notes,
-//             layout: "../views/layouts/dashboard",
-//             // current: page,
-//             // pages: Math.ceil(count / perPage),
-//           });
-//     // const count = await Note.count();
-
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
-
-
-
-
-//         // console.log(notes);
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -77,7 +15,7 @@ exports.dashboard = async (req, res) => {
 
   const locals = {
     title: "Dashboard",
-    description: "Free NodeJS Notes App.",
+    description: "Free  Notes App.",
   };
 
   try {
@@ -116,6 +54,7 @@ exports.dashboard = async (req, res) => {
  * GET /
  * View Specific Note
  */
+
 exports.dashboardViewNote = async (req, res) => {
   const note = await Note.findById({ _id: req.params.id })
     .where({ user: req.user.id })
@@ -136,6 +75,7 @@ exports.dashboardViewNote = async (req, res) => {
  * PUT /
  * Update Specific Note
  */
+
 exports.dashboardUpdateNote = async (req, res) => {
   try {
     await Note.findOneAndUpdate(
@@ -152,6 +92,7 @@ exports.dashboardUpdateNote = async (req, res) => {
  * DELETE /
  * Delete Note
  */
+
 exports.dashboardDeleteNote = async (req, res) => {
   try {
     await Note.deleteOne({ _id: req.params.id }).where({ user: req.user.id });
@@ -165,6 +106,7 @@ exports.dashboardDeleteNote = async (req, res) => {
  * GET /
  * Add Notes
  */
+
 exports.dashboardAddNote = async (req, res) => {
   res.render("dashboard/add", {
     layout: "../views/layouts/dashboard",
@@ -175,6 +117,7 @@ exports.dashboardAddNote = async (req, res) => {
  * POST /
  * Add Notes
  */
+
 exports.dashboardAddNoteSubmit = async (req, res) => {
   try {
     req.body.user = req.user.id;
@@ -189,6 +132,7 @@ exports.dashboardAddNoteSubmit = async (req, res) => {
  * GET /
  * Search
  */
+
 exports.dashboardSearch = async (req, res) => {
   try {
     res.render("dashboard/search", {
@@ -202,6 +146,7 @@ exports.dashboardSearch = async (req, res) => {
  * POST /
  * Search For Notes
  */
+
 exports.dashboardSearchSubmit = async (req, res) => {
   try {
     let searchTerm = req.body.searchTerm;

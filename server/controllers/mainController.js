@@ -2,8 +2,8 @@
 
 exports.homepage=async(req,res)=>{
     const locals={
-        title:"NodeJs Notes",
-        description:"Free NodeJs Notes App"
+        title:"NoteEase",
+        description:"Free Notes App"
     };
     res.render("index",{
         locals,
@@ -16,8 +16,18 @@ exports.homepage=async(req,res)=>{
 
 exports.about=async(req,res)=>{
     const locals={
-        title:"About-NodeJs Notes",
-        description:"Free NodeJs Notes App"
+        title:"NoteEase",
+        description:"Free Notes App"
     };
     res.render("about",locals)
+}
+// get FAQs
+
+exports.faqs=async(req,res)=>{
+    const locals={
+        title:"NoteEase",
+        description:"Free Notes App"
+    };
+    
+    res.render("FAQs",locals)
 }
